@@ -58,6 +58,19 @@ nav.scrolled .nav-logo img{height:64px}
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.95);transition:opacity .8s ease,transform .8s ease}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+
+/* HERO ANIMATIONS */
+@keyframes heroFadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heroFadeIn{from{opacity:0}to{opacity:1}}
+.hero-tag{animation:heroFadeUp .8s .3s both}
+.hero h1{animation:heroFadeUp .8s .5s both}
+.hero-sub{animation:heroFadeUp .8s .7s both}
+.hero-cta{animation:heroFadeUp .8s .9s both}
+.hero-scroll{animation:heroFadeIn 1s 1.2s both}
 
 /* QUOTE */
 .quote-sec{padding:88px 64px;text-align:center;border-bottom:1px solid rgba(255,255,255,.05)}
@@ -68,7 +81,7 @@ nav.scrolled .nav-logo img{height:64px}
 .full-photo{height:65vh;position:relative;overflow:hidden}
 .full-photo-bg{position:absolute;inset:0;background:url('img/rio.jpeg') center/cover no-repeat;transition:transform .8s ease}
 .full-photo:hover .full-photo-bg{transform:scale(1.03)}
-.full-photo-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,18,8,.05) 30%,rgba(13,18,8,.88) 100%)}
+.full-photo-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,18,8,.5) 0%,rgba(13,18,8,.65) 50%,rgba(13,18,8,.93) 100%)}
 .full-photo-label{position:absolute;bottom:48px;left:64px;z-index:2}
 .full-photo-label h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:300;font-style:italic;margin-bottom:8px}
 .full-photo-label p{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5)}
@@ -162,7 +175,8 @@ nav.scrolled{padding:12px 24px}
 .nav-hamburger{display:block}
 .nav-logo img{height:56px}
 nav.scrolled .nav-logo img{height:44px}
-.hero-content{padding:0 24px 64px}
+.hero{height:65vh}
+.hero-content{padding:0 24px 48px}
 .hero-scroll{display:none}
 .quote-sec{padding:60px 24px}
 .full-photo-label{left:24px;bottom:32px}
@@ -321,12 +335,12 @@ footer{flex-direction:column;gap:20px;text-align:center;padding:28px 24px}
 </section>
 
 <div id="experiencias" class="split">
-  <div class="split-photo reveal">
+  <div class="split-photo reveal-left">
     <div class="split-bg" style="background-image:url('img/experiencias/lareira.jpg')"></div>
     <div class="split-overlay"></div>
     <div class="split-label"><h3>Lareira & Aconchego</h3><p>Noites frias da Canastra com o calor da lareira. Exclusivo nos Chalés VIP.</p></div>
   </div>
-  <div class="split-photo reveal">
+  <div class="split-photo reveal-scale">
     <div class="split-bg" style="background-image:url('img/experiencias/cafe-da-manha.jpg')"></div>
     <div class="split-overlay"></div>
     <div class="split-label"><h3>Café da Manhã</h3><p>Frutas frescas, bolos caseiros e café quentinho. Incluso em todas as hospedagens.</p></div>
@@ -390,7 +404,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
 
   const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target)}})},{threshold:.15});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-scale').forEach(el=>obs.observe(el));
 });
 </script>
 </body>
