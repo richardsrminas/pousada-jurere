@@ -46,7 +46,8 @@ nav.scrolled .nav-logo img{height:64px}
 .hero-photo{position:absolute;inset:0;background:url('img/header.png') center/cover no-repeat}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(13,18,8,.9) 40%,rgba(13,18,8,.15) 100%),linear-gradient(to top,rgba(13,18,8,.98) 0%,transparent 55%)}
 .hero-content{position:relative;z-index:2;padding:0 64px 88px;max-width:680px}
-.hero-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:24px}
+.hero-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:24px;animation:heroFadeUp .8s .3s both}
+.hero-name{display:none;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;font-style:italic;color:rgba(255,255,255,.8);margin-bottom:12px;letter-spacing:1px;animation:heroFadeUp .8s .4s both}
 .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.2rem);font-weight:300;line-height:1;letter-spacing:-1px;margin-bottom:24px}
 .hero h1 em{font-style:italic;color:#A8C896}
 .hero-sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.9;max-width:400px;margin-bottom:40px;font-weight:300}
@@ -181,8 +182,8 @@ nav.scrolled{padding:12px 24px}
 .nav-hamburger{display:block}
 .nav-logo img{height:56px}
 nav.scrolled .nav-logo img{height:44px}
-.hero{height:65vh}
-.hero-content{padding:0 24px 48px}
+.hero-name{display:block;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;font-style:italic;color:rgba(255,255,255,.8);margin-bottom:16px;letter-spacing:1px}
+.hero{height:65vh}.hero-content{padding:0 24px 48px}
 .hero-scroll{display:none}
 .quote-sec{padding:60px 24px}
 .full-photo-label{left:24px;bottom:32px}
@@ -238,6 +239,7 @@ footer{flex-direction:column;gap:20px;text-align:center;padding:28px 24px}
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-tag">Vargem Bonita · Serra da Canastra · MG</div>
+    <span class="hero-name">Pousada Jurerê da Canastra</span>
     <h1>Onde o tempo<br>passa <em>devagar</em></h1>
     <p class="hero-sub">Às margens do Rio São Francisco, entre a natureza da Serra da Canastra. Conforto, lareira e silêncio em um cantinho único.</p>
     <a href="https://wa.me/5537988343272?text=Olá!%20Quero%20fazer%20uma%20reserva%20na%20Pousada%20Jurerê%20da%20Canastra." target="_blank" rel="noopener noreferrer" class="hero-cta">
