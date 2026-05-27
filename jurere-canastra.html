@@ -132,6 +132,9 @@ nav.scrolled .nav-logo img{height:64px}
 .split-label{position:absolute;bottom:36px;left:40px;z-index:2}
 .split-label h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:300;font-style:italic;margin-bottom:6px}
 .split-label p{font-size:12px;color:rgba(255,255,255,.6);line-height:1.65;max-width:240px}
+.split-carousel{position:absolute;inset:0;height:100%}
+.split-carousel .carousel-track{height:100%}
+.split-carousel .carousel-slide img{width:100%;height:100%;object-fit:cover}
 
 /* NATUREZA */
 .nature-sec{padding:72px 64px;border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
@@ -352,9 +355,18 @@ footer{flex-direction:column;gap:20px;text-align:center;padding:28px 24px}
     <div class="split-label"><h3>Lareira & Aconchego</h3><p>Noites frias da Canastra com o calor da lareira. Exclusivo nos Chalés VIP.</p></div>
   </div>
   <div class="split-photo reveal-scale">
-    <div class="split-bg" style="background-image:url('img/experiencias/cafe-da-manha.jpg')"></div>
+    <div class="carousel split-carousel">
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="img/experiencias/cafe-da-manha.jpg" alt="Café da manhã"></div>
+        <div class="carousel-slide"><img src="img/experiencias/pao-de-queijo.jpg" alt="Pão de queijo"></div>
+        <div class="carousel-slide"><img src="img/experiencias/queijo.jpg" alt="Queijo da Canastra"></div>
+      </div>
+      <button class="carousel-prev" aria-label="Anterior">&#10094;</button>
+      <button class="carousel-next" aria-label="Próximo">&#10095;</button>
+      <div class="carousel-dots"></div>
+    </div>
     <div class="split-overlay"></div>
-    <div class="split-label"><h3>Café da Manhã</h3><p>Frutas frescas, bolos caseiros e café quentinho. Incluso em todas as hospedagens.</p></div>
+    <div class="split-label"><h3>Café da Manhã</h3><p>Pão de queijo, queijo da Canastra, frutas frescas, bolos caseiros e café quentinho. Incluso em todas as hospedagens.</p></div>
   </div>
 </div>
 
@@ -415,15 +427,18 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   document.querySelectorAll('.carousel').forEach(c=>{
     const track=c.querySelector('.carousel-track'),slides=c.querySelectorAll('.carousel-slide'),prev=c.querySelector('.carousel-prev'),next=c.querySelector('.carousel-next'),dots=c.querySelector('.carousel-dots');
-    let cur=0,total=slides.length;
-    for(let i=0;i<total;i++){const d=document.createElement('button');d.className=i===0?'active':'';d.addEventListener('click',()=>go(i));dots.appendChild(d)}
+    let cur=0,total=slides.length,autoTimer;
+    for(let i=0;i<total;i++){const d=document.createElement('button');d.className=i===0?'active':'';d.addEventListener('click',()=>{go(i);resetAuto()});dots.appendChild(d)}
     function go(i){cur=((i%total)+total)%total;track.scrollTo({left:cur*track.offsetWidth,behavior:'smooth'});dots.querySelectorAll('button').forEach((d,j)=>d.classList.toggle('active',j===cur))}
-    prev.addEventListener('click',e=>{e.stopPropagation();go(cur-1)});
-    next.addEventListener('click',e=>{e.stopPropagation();go(cur+1)});
+    function startAuto(){autoTimer=setInterval(()=>go(cur+1),4000)}
+    function resetAuto(){clearInterval(autoTimer);startAuto()}
+    prev.addEventListener('click',e=>{e.stopPropagation();go(cur-1);resetAuto()});
+    next.addEventListener('click',e=>{e.stopPropagation();go(cur+1);resetAuto()});
     let sx=0;
-    track.addEventListener('touchstart',e=>{sx=e.touches[0].clientX});
-    track.addEventListener('touchend',e=>{const d=sx-e.changedTouches[0].clientX;if(Math.abs(d)>50){d>0?go(cur+1):go(cur-1)}});
+    track.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;clearInterval(autoTimer)});
+    track.addEventListener('touchend',e=>{const d=sx-e.changedTouches[0].clientX;if(Math.abs(d)>50){d>0?go(cur+1):go(cur-1)}startAuto()});
     track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.offsetWidth);if(i!==cur){cur=i;dots.querySelectorAll('button').forEach((d,j)=>d.classList.toggle('active',j===cur))}});
+    startAuto();
   });
 
   const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target)}})},{threshold:.15});
