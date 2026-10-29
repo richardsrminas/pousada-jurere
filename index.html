@@ -2,455 +2,62 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pousada Jurerê da Canastra · Vargem Bonita, MG</title>
-<meta name="description" content="Pousada às margens do Rio São Francisco, na Serra da Canastra. Chalés, suítes e Chalé VIP com ofurô. Café da manhã incluso. Vargem Bonita, MG.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f3efe4">
+<meta name="description" content="Pousada Jurerê da Canastra: dias tranquilos às margens do Rio São Francisco, em Vargem Bonita, MG. Suítes, chalés e refúgio VIP.">
+<title>Jurerê da Canastra — o tempo passa devagar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-refactor.webp" fetchpriority="high">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#0D1208;color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-a{text-decoration:none;color:inherit}
-.skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:#0D1208;color:#fff;padding:12px 24px;font-size:14px;border:2px solid #A8C896;transition:top .3s}
-.skip-link:focus{top:16px}
-a:focus-visible,button:focus-visible{outline:2px solid #A8C896;outline-offset:3px}
-a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:24px 64px;transition:all .6s}
-nav.scrolled{background:rgba(13,18,8,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:14px 64px;border-bottom:1px solid rgba(255,255,255,.06)}
-.nav-logo img{height:96px;width:auto;object-fit:contain;transition:height .4s}
-nav.scrolled .nav-logo img{height:64px}
-.nav-links{display:flex;align-items:center;gap:36px}
-.nav-links a{font-size:12px;color:rgba(255,255,255,.65);letter-spacing:1.5px;text-transform:uppercase;transition:color .25s}
-.nav-links a:hover{color:#fff}
-.nav-cta{border:1px solid rgba(255,255,255,.25);color:#fff!important;padding:10px 24px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s}
-.nav-cta:hover{background:#fff;color:#0D1208!important}
-.nav-hamburger{display:none;background:none;border:none;cursor:pointer;width:28px;height:20px;position:relative;z-index:201}
-.nav-hamburger span{display:block;width:100%;height:2px;background:#fff;position:absolute;left:0;transition:all .3s}
-.nav-hamburger span:nth-child(1){top:0}
-.nav-hamburger span:nth-child(2){top:9px}
-.nav-hamburger span:nth-child(3){top:18px}
-.nav-hamburger.active span:nth-child(1){top:9px;transform:rotate(45deg)}
-.nav-hamburger.active span:nth-child(2){opacity:0}
-.nav-hamburger.active span:nth-child(3){top:9px;transform:rotate(-45deg)}
-.mobile-menu{position:fixed;inset:0;z-index:200;background:rgba(13,18,8,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;opacity:0;pointer-events:none;transition:opacity .4s}
-.mobile-menu.open{opacity:1;pointer-events:all}
-.mobile-menu a{font-size:18px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);transition:color .25s}
-.mobile-menu a:hover{color:#fff}
-
-/* HERO */
-.hero{height:100vh;position:relative;display:flex;align-items:flex-end;overflow:hidden}
-.hero-photo{position:absolute;inset:0;background:url('img/header.png') center/cover no-repeat}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(13,18,8,.9) 40%,rgba(13,18,8,.15) 100%),linear-gradient(to top,rgba(13,18,8,.98) 0%,transparent 55%)}
-.hero-content{position:relative;z-index:2;padding:0 64px 88px;max-width:680px}
-.hero-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:24px;animation:heroFadeUp .8s .3s both}
-.hero-name{display:none;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;font-style:italic;color:rgba(255,255,255,.8);margin-bottom:12px;letter-spacing:1px;animation:heroFadeUp .8s .4s both}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.2rem);font-weight:300;line-height:1;letter-spacing:-1px;margin-bottom:24px}
-.hero h1 em{font-style:italic;color:#A8C896}
-.hero-sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.9;max-width:400px;margin-bottom:40px;font-weight:300}
-.hero-cta{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18);color:#fff;padding:16px 32px;font-size:11px;letter-spacing:2px;text-transform:uppercase;transition:all .35s}
-.hero-cta:hover{background:rgba(255,255,255,.16)}
-.hero-scroll{position:absolute;right:64px;bottom:48px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.3);font-size:9px;letter-spacing:3px;text-transform:uppercase}
-.hero-scroll-line{width:1px;height:56px;background:rgba(255,255,255,.15)}
-
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .8s ease,transform .8s ease}
-.reveal-left.visible{opacity:1;transform:translateX(0)}
-.reveal-scale{opacity:0;transform:scale(.95);transition:opacity .8s ease,transform .8s ease}
-.reveal-scale.visible{opacity:1;transform:scale(1)}
-
-/* HERO ANIMATIONS */
-@keyframes heroFadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
-@keyframes heroFadeIn{from{opacity:0}to{opacity:1}}
-.hero-tag{animation:heroFadeUp .8s .3s both}
-.hero h1{animation:heroFadeUp .8s .5s both}
-.hero-sub{animation:heroFadeUp .8s .7s both}
-.hero-cta{animation:heroFadeUp .8s .9s both}
-.hero-scroll{animation:heroFadeIn 1s 1.2s both}
-
-/* QUOTE */
-.quote-sec{padding:88px 64px;text-align:center;border-bottom:1px solid rgba(255,255,255,.05)}
-.quote-sec blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.8vw,2.3rem);font-weight:300;font-style:italic;color:rgba(255,255,255,.7);line-height:1.5;max-width:720px;margin:0 auto 18px}
-.quote-sec cite{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35)}
-
-/* FACHADA */
-.full-photo{height:65vh;position:relative;overflow:hidden}
-.full-photo-bg{position:absolute;inset:0;background:url('img/rio.jpeg') center/cover no-repeat;transition:transform .8s ease}
-.full-photo:hover .full-photo-bg{transform:scale(1.03)}
-.full-photo-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,18,8,.5) 0%,rgba(13,18,8,.65) 50%,rgba(13,18,8,.93) 100%)}
-.full-photo-label{position:absolute;bottom:48px;left:64px;z-index:2}
-.full-photo-label h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:300;font-style:italic;margin-bottom:8px}
-.full-photo-label p{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5)}
-
-/* ACOMODAÇÕES */
-.acom-sec{padding:96px 64px;background:#0A1008}
-.acom-sec>h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:300;font-style:italic;margin-bottom:12px}
-.acom-lead{font-size:13px;color:rgba(255,255,255,.6);max-width:480px;line-height:1.8;margin-bottom:56px}
-.acom-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.acom-card{position:relative;overflow:hidden;cursor:pointer;transition:transform .4s ease,box-shadow .4s ease}
-.acom-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
-
-/* CARROSSEL CSS SCROLL-SNAP */
-.carousel{height:480px;width:100%;position:relative;overflow:hidden}
-.carousel-track{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none}
-.carousel-track::-webkit-scrollbar{display:none}
-.carousel-slide{min-width:100%;height:100%;scroll-snap-align:start;flex-shrink:0}
-.carousel-slide img{width:100%;height:100%;object-fit:cover}
-.carousel-prev,.carousel-next{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:40px;height:40px;background:rgba(0,0,0,.5);border:none;border-radius:50%;color:#fff;font-size:20px;cursor:pointer;opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center}
-.carousel-prev{left:12px}
-.carousel-next{right:12px}
-.acom-card:hover .carousel-prev,.acom-card:hover .carousel-next{opacity:1}
-.carousel-dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:5;display:flex;gap:6px}
-.carousel-dots button{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);border:none;padding:0;cursor:pointer;transition:background .3s}
-.carousel-dots button.active{background:#fff}
-
-.acom-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.95) 0%,rgba(0,0,0,.75) 40%,rgba(0,0,0,.2) 70%,transparent 100%);pointer-events:none}
-.acom-card-body{position:absolute;bottom:0;left:0;right:0;padding:32px;z-index:3}
-.acom-tipo{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:8px}
-.acom-tipo.gold{color:#C9A84C}
-.acom-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;font-style:italic;margin-bottom:8px}
-.acom-desc{font-size:11px;color:rgba(255,255,255,.7);line-height:1.65;margin-bottom:14px;max-width:260px}
-.acom-price strong{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#fff}
-.acom-price-sub{font-size:10px;color:rgba(255,255,255,.55);margin-top:3px;margin-bottom:16px}
-.acom-link{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px;transition:all .25s}
-.acom-link:hover{color:#fff;border-color:#fff}
-.acom-link.gold{color:rgba(201,168,76,.6);border-color:rgba(201,168,76,.2)}
-.acom-link.gold:hover{color:#C9A84C;border-color:#C9A84C}
-.vip-badge{position:absolute;top:18px;right:18px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.28);color:#C9A84C;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;z-index:6}
-
-/* SPLIT */
-.split{display:grid;grid-template-columns:1fr 1fr;height:72vh}
-.split-photo{position:relative;overflow:hidden}
-.split-photo:hover .split-bg{transform:scale(1.04)}
-.split-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .8s ease}
-.split-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,.05) 60%)}
-.split-label{position:absolute;bottom:36px;left:40px;z-index:2}
-.split-label h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:300;font-style:italic;margin-bottom:6px}
-.split-label p{font-size:12px;color:rgba(255,255,255,.6);line-height:1.65;max-width:240px}
-.split-carousel{position:absolute;inset:0;height:100%;width:100%}
-.split-carousel .carousel-track{position:absolute;inset:0}
-.split-carousel .carousel-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease}
-.split-carousel .carousel-slide.active-slide{opacity:1}
-.split-carousel .carousel-slide img{width:100%;height:100%;object-fit:cover;display:block}
-.split-carousel .carousel-dots{bottom:14px}
-.split-carousel .carousel-prev,.split-carousel .carousel-next{opacity:0}
-.split-photo:hover .split-carousel .carousel-prev,.split-photo:hover .split-carousel .carousel-next{opacity:1}
-
-/* NATUREZA */
-.nature-sec{padding:72px 64px;border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
-.nature-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-.nature-item{padding:36px 28px;border-right:1px solid rgba(255,255,255,.04);text-align:center;transition:background .3s}
-.nature-item:last-child{border-right:none}
-.nature-item:hover{background:rgba(255,255,255,.03)}
-.nature-item h3{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;font-style:italic;margin-bottom:10px;color:rgba(255,255,255,.8)}
-.nature-item p{font-size:12px;color:rgba(255,255,255,.55);line-height:1.8}
-
-/* CTA */
-.cta-sec{height:52vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-.cta-photo{position:absolute;inset:0;background:url('img/cta-background.jpg') center/cover no-repeat}
-.cta-overlay{position:absolute;inset:0;background:rgba(13,18,8,.76)}
-.cta-content{position:relative;z-index:1;max-width:540px;padding:0 32px}
-.cta-content h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.4rem);font-weight:300;font-style:italic;margin-bottom:16px;line-height:1.1}
-.cta-content p{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:32px;line-height:1.9;font-weight:300}
-.cta-btns{display:flex;gap:12px;justify-content:center}
-.btn-wa{display:inline-flex;align-items:center;gap:8px;background:#22c55e;color:#fff;padding:14px 32px;font-size:11px;letter-spacing:2px;text-transform:uppercase;transition:all .3s}
-.btn-wa:hover{background:#16a34a;transform:translateY(-2px)}
-.btn-outline{display:inline-flex;align-items:center;background:transparent;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.18);padding:14px 28px;font-size:11px;letter-spacing:2px;text-transform:uppercase;transition:all .3s}
-.btn-outline:hover{border-color:rgba(255,255,255,.4);color:#fff}
-
-/* FOOTER */
-.location-sec{display:grid;grid-template-columns:1fr 1fr;min-height:400px}
-.location-text{display:flex;flex-direction:column;justify-content:center;padding:64px;background:#0A1008}
-.location-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;font-style:italic;margin-bottom:12px}
-.location-text p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:24px}
-.location-map{position:relative;min-height:400px}
-.location-map iframe{position:absolute;inset:0;width:100%;height:100%}
-footer{padding:32px 64px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between}
-.footer-logo img{height:40px;width:auto;opacity:.7}
-.footer-info{font-size:11px;color:rgba(255,255,255,.45);text-align:center;line-height:1.9}
-.footer-links{display:flex;gap:24px}
-.footer-links a{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);transition:color .25s}
-.footer-links a:hover{color:rgba(255,255,255,.8)}
-
-/* WA FLOAT */
-.wa-float{position:fixed;bottom:28px;right:28px;z-index:200;width:52px;height:52px;background:#22c55e;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 28px rgba(34,197,94,.3);transition:all .25s;animation:waIn .5s 1.5s both}
-@keyframes waIn{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
-.wa-float:hover{transform:scale(1.1)}
-
-/* MOBILE */
-@media(max-width:768px){
-nav{padding:16px 24px}
-nav.scrolled{padding:12px 24px}
-.nav-links{display:none}
-.nav-hamburger{display:block}
-.nav-logo img{height:56px}
-nav.scrolled .nav-logo img{height:44px}
-.hero-name{display:block;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;font-style:italic;color:rgba(255,255,255,.8);margin-bottom:16px;letter-spacing:1px}
-.hero{height:65vh}.hero-content{padding:0 24px 48px}
-.hero-scroll{display:none}
-.quote-sec{padding:60px 24px}
-.full-photo-label{left:24px;bottom:32px}
-.acom-sec{padding:64px 24px}
-.acom-grid{grid-template-columns:1fr}
-.carousel{height:320px}
-.carousel-prev,.carousel-next{opacity:1}
-.split{grid-template-columns:1fr;height:auto}
-.split-photo{height:60vw;min-height:280px}
-.nature-sec{padding:60px 24px}
-.nature-grid{grid-template-columns:1fr 1fr}
-.nature-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.04);padding:24px 16px}
-.nature-item:last-child{border-bottom:none}
-.cta-btns{flex-direction:column;align-items:center}
-.location-sec{grid-template-columns:1fr}
-.location-text{padding:48px 24px}
-.location-map{min-height:300px}
-footer{flex-direction:column;gap:20px;text-align:center;padding:28px 24px}
-.footer-links{justify-content:center}
-}
-@media(max-width:480px){
-.nature-grid{grid-template-columns:1fr}
-.hero h1{font-size:2.5rem}
-}
+:root{--paper:#f3efe4;--paper-deep:#e9e1d0;--ink:#24301f;--muted:#68705f;--green:#70bd48;--green-dark:#35552d;--forest:#17251c;--forest-soft:#24372a;--line:rgba(36,48,31,.16);--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',Arial,sans-serif;--ease:cubic-bezier(.22,1,.36,1)}
+*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button,input,select{font:inherit}button,a{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--green);outline-offset:4px}.skip{position:absolute;left:12px;top:-60px;background:var(--paper);padding:12px;z-index:300}.skip:focus{top:12px}.wrap{width:min(1280px,calc(100% - 96px));margin-inline:auto}.eyebrow{font-size:10px;font-weight:700;letter-spacing:.19em;text-transform:uppercase;color:var(--green-dark)}.serif{font-family:var(--serif);font-weight:400}.section-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:48px}.section-head h2{font:400 clamp(2.5rem,5vw,5rem)/1 var(--serif);letter-spacing:-.045em;margin:12px 0 0;max-width:650px}.section-head p{color:var(--muted);line-height:1.7;max-width:330px;font-size:14px;margin:0 0 4px}
+/* Entry and navigation */
+.preload{position:fixed;inset:0;background:var(--paper);z-index:500;display:grid;place-items:center;transition:opacity .55s var(--ease),visibility .55s}.preload.done{opacity:0;visibility:hidden}.preload-inner{text-align:center}.preload img{width:88px;height:88px;object-fit:contain;margin:0 auto 14px;border-radius:50%}.preload-count{font:400 13px var(--sans);letter-spacing:.12em;color:var(--green-dark)}.nav{position:fixed;z-index:100;top:0;left:0;width:100%;padding:15px 0;transition:background .3s,padding .3s,color .3s}.nav.scrolled{padding:9px 0;background:rgba(243,239,228,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}.nav-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.brand img{width:66px;height:66px;object-fit:contain;border-radius:50%}.nav-links{display:flex;align-items:center;gap:clamp(16px,3vw,40px);font-size:12px;font-weight:600}.nav-links>a:not(.button){padding:12px 0}.button{border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 23px;background:var(--green);color:#17251c;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:transform .25s var(--ease),background .25s}.button:hover{transform:translateY(-2px);background:#82cb58}.button.ghost{background:transparent;border:1px solid currentColor;color:inherit}.menu-toggle{display:none;background:transparent;border:1px solid currentColor;color:inherit;padding:10px 14px}
+/* Hero */
+.hero{position:relative;min-height:min(850px,100svh);min-height:max(680px,100svh);display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:var(--forest)}.hero-media{position:absolute;inset:0}.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 53%;animation:heroIn 1.4s var(--ease) both}.hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,34,24,.74),rgba(18,34,24,.1) 78%),linear-gradient(0deg,rgba(18,34,24,.75),transparent 65%)}.hero-content{position:relative;z-index:1;width:min(1280px,calc(100% - 96px));margin:0 auto;padding:0 0 clamp(70px,10vh,120px)}.hero .eyebrow{color:#c2e5a9}.hero h1{font:400 clamp(3.5rem,8vw,8rem)/.94 var(--serif);letter-spacing:-.055em;max-width:850px;margin:24px 0}.hero h1 em{color:#a8d17b}.hero-lead{font-size:clamp(15px,1.5vw,18px);line-height:1.75;color:rgba(255,255,255,.83);max-width:430px;margin:0 0 28px}.hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.hero-caption{position:absolute;z-index:2;right:48px;bottom:42px;writing-mode:vertical-rl;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+/* Intro and timeline */
+.intro{padding:clamp(76px,11vw,150px) 0;background:var(--paper)}.intro-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:8vw;align-items:start}.intro-mark{width:112px;border-radius:50%;margin-top:8px}.intro-copy h2{font:400 clamp(2.4rem,5.2vw,5.4rem)/1.1 var(--serif);letter-spacing:-.045em;margin:0 0 24px;max-width:820px}.intro-copy h2 em{color:var(--green-dark)}.intro-copy p{font-size:15px;line-height:1.9;color:var(--muted);max-width:590px;margin:0}.day{padding:90px 0 120px;background:var(--paper-deep)}.day-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:9vw}.day-title{position:sticky;top:125px;align-self:start}.day-title h2{font:400 clamp(2.8rem,5.4vw,5.5rem)/1 var(--serif);letter-spacing:-.05em;margin:14px 0 20px}.day-title p{font-size:14px;color:var(--muted);max-width:270px;line-height:1.8}.moments{border-top:1px solid var(--line)}.moment{display:grid;grid-template-columns:100px 1fr;gap:20px;padding:29px 0;border-bottom:1px solid var(--line);transition:padding .3s}.moment:hover{padding-left:10px}.moment time{font:italic 22px var(--serif);color:var(--green-dark)}.moment h3{font:400 25px var(--serif);margin:0 0 7px}.moment p{font-size:13px;color:var(--muted);line-height:1.7;margin:0;max-width:420px}
+/* Immersive VIP */
+.vip{background:var(--forest);color:var(--paper);padding:clamp(80px,10vw,140px) 0}.vip-layout{display:grid;grid-template-columns:.76fr 1.24fr;gap:8vw;align-items:start}.vip-copy{position:sticky;top:15vh}.vip-copy .eyebrow{color:#a8d17b}.vip-copy h2{font:400 clamp(3rem,6vw,6.2rem)/.96 var(--serif);letter-spacing:-.055em;margin:22px 0}.vip-copy>p{font-size:14px;line-height:1.8;color:rgba(243,239,228,.72);max-width:380px}.vip-price{margin:26px 0 22px;font:400 30px var(--serif)}.vip-price small{font:400 12px var(--sans);color:rgba(243,239,228,.57)}.vip-features{display:flex;gap:9px;flex-wrap:wrap;margin:25px 0}.vip-features span{font-size:10px;letter-spacing:.05em;border:1px solid rgba(243,239,228,.2);padding:9px 12px;color:rgba(243,239,228,.8)}.vip-photos{display:grid;grid-template-columns:1fr 1fr;gap:12px}.vip-photos figure{margin:0;overflow:hidden}.vip-photos figure:first-child{grid-column:1/-1;aspect-ratio:1.22}.vip-photos figure:not(:first-child){aspect-ratio:.84}.vip-photos img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}.vip-photos figure:hover img{transform:scale(1.035)}.vip-photos figcaption{font:italic 15px var(--serif);padding:10px 0;color:rgba(243,239,228,.62)}
+/* Rooms */
+.rooms{padding:clamp(80px,10vw,140px) 0}.room-list{display:grid;gap:18px}.room{display:grid;grid-template-columns:1.05fr .95fr;background:#e9e3d5;min-height:390px;overflow:hidden}.room:nth-child(even){grid-template-columns:.95fr 1.05fr}.room:nth-child(even) .room-image{order:2}.room-image{min-height:360px;overflow:hidden}.room-image img{width:100%;height:100%;min-height:360px;object-fit:cover;transition:transform .7s var(--ease)}.room:hover .room-image img{transform:scale(1.025)}.room-info{padding:clamp(26px,5vw,66px);display:flex;flex-direction:column;justify-content:center}.room-info .eyebrow{margin-bottom:12px}.room-info h3{font:400 clamp(2rem,3.8vw,3.6rem)/1 var(--serif);margin:0 0 15px}.room-info p{font-size:13px;color:var(--muted);line-height:1.8;max-width:400px;margin:0}.room-bottom{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-top:25px}.room-price{font:400 25px var(--serif)}.room-price small{display:block;font:400 10px var(--sans);color:var(--muted);margin-top:4px}.text-link{font-size:10px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--green-dark);padding:9px 0;font-weight:700}
+/* Experiences and place */
+.experiences{padding:88px 0;background:var(--green-dark);color:var(--paper)}.experiences .eyebrow{color:#c8e7ae}.experiences .section-head p{color:rgba(243,239,228,.72)}.experience-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:13px}.experience{position:relative;min-height:310px;overflow:hidden;background:var(--forest)}.experience img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}.experience:hover img{transform:scale(1.04)}.experience:after{content:'';position:absolute;inset:30% 0 0;background:linear-gradient(transparent,rgba(16,30,21,.88))}.experience-copy{position:absolute;z-index:1;left:23px;right:23px;bottom:22px}.experience-copy h3{font:400 25px var(--serif);margin:0 0 7px}.experience-copy p{font-size:11px;line-height:1.6;color:rgba(255,255,255,.72);margin:0;max-width:280px}.place{padding:clamp(80px,10vw,135px) 0}.place-grid{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center}.place-copy h2{font:400 clamp(2.8rem,5vw,5rem)/1 var(--serif);letter-spacing:-.04em;margin:15px 0 20px}.place-copy p{font-size:14px;line-height:1.8;color:var(--muted);max-width:410px}.map-card{position:relative;min-height:360px;background:var(--paper-deep);overflow:hidden;display:grid;place-items:center}.map-card:before,.map-card:after{content:'';position:absolute;border:1px solid rgba(53,85,45,.2);border-radius:50%;width:68%;aspect-ratio:1}.map-card:after{width:42%}.map-mark{position:relative;z-index:1;text-align:center}.map-mark b{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--green);margin:0 auto 12px;font-size:21px}.map-mark span{display:block;font:italic 20px var(--serif)}.map-mark small{font-size:10px;color:var(--muted)}.map-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.map-links .button{min-height:42px;padding-inline:15px}
+/* Footer and overlays */
+.footer{background:var(--forest);color:var(--paper);padding:48px 0 95px}.footer-row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}.footer-brand{display:flex;align-items:center;gap:15px}.footer-brand img{width:58px;height:58px;border-radius:50%}.footer-brand span{font:italic 19px var(--serif)}.footer-note{font-size:11px;line-height:1.8;color:rgba(243,239,228,.58)}.footer-links{display:flex;gap:20px;font-size:11px}.dock{position:fixed;z-index:80;left:50%;bottom:15px;transform:translateX(-50%);display:flex;align-items:center;gap:13px;padding:9px 10px 9px 18px;background:rgba(23,37,28,.96);color:var(--paper);box-shadow:0 8px 30px rgba(18,34,24,.18);border:1px solid rgba(243,239,228,.13);width:max-content;max-width:calc(100% - 28px)}.dock span{font:italic 15px var(--serif);white-space:nowrap}.dock .button{min-height:42px;padding:0 16px;white-space:nowrap}.modal-backdrop{position:fixed;inset:0;z-index:300;background:rgba(15,24,18,.58);display:none;align-items:stretch;justify-content:flex-end}.modal-backdrop.open{display:flex}.drawer{background:var(--paper);color:var(--ink);width:min(480px,100%);height:100%;overflow-y:auto;padding:30px clamp(22px,5vw,42px);animation:drawerIn .35s var(--ease)}.drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:35px}.drawer-top h2{font:400 32px var(--serif);margin:0}.close{width:42px;height:42px;background:transparent;border:1px solid var(--line);font-size:22px;cursor:pointer}.field{display:grid;gap:8px;margin:18px 0}.field label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.field select,.field input{width:100%;height:50px;border:1px solid var(--line);background:#faf8f1;color:var(--ink);padding:0 13px}.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.quote-total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding:20px 0;margin-top:24px}.quote-total span{font-size:12px;color:var(--muted)}.quote-total strong{font:400 30px var(--serif)}.drawer .button{width:100%}.drawer-note{font-size:11px;line-height:1.6;color:var(--muted);margin-top:12px}.toast{position:fixed;z-index:400;left:50%;top:20px;transform:translate(-50%,-20px);opacity:0;pointer-events:none;background:var(--forest);color:var(--paper);padding:12px 18px;font-size:12px;transition:opacity .2s,transform .2s}.toast.show{opacity:1;transform:translate(-50%,0)}
+@keyframes drawerIn{from{transform:translateX(35px);opacity:.7}to{transform:none;opacity:1}}@keyframes heroIn{from{transform:scale(1.035);opacity:.7}to{transform:scale(1);opacity:1}}
+@media(max-width:800px){.wrap,.hero-content{width:calc(100% - 40px)}.nav-row{flex-wrap:nowrap}.brand img{width:55px;height:55px}.menu-toggle{display:inline-flex}.nav-links{display:none;position:absolute;top:100%;left:20px;right:20px;background:var(--paper);color:var(--ink);padding:14px 20px 20px;box-shadow:0 12px 22px rgba(20,30,18,.12);flex-direction:column;align-items:stretch;gap:2px}.nav-links.open{display:flex}.nav-links>a:not(.button){padding:13px 0}.hero{min-height:750px;min-height:100svh}.hero-media img{object-position:61% center}.hero-shade{background:linear-gradient(0deg,rgba(18,34,24,.8),rgba(18,34,24,.04) 95%)}.hero-content{padding-bottom:78px}.hero-caption{display:none}.intro-grid,.day-grid,.vip-layout,.place-grid{grid-template-columns:1fr;gap:35px}.intro-mark{width:76px}.day-title{position:static}.vip-copy{position:static}.vip-photos figure:first-child{aspect-ratio:1.05}.room,.room:nth-child(even){grid-template-columns:1fr}.room:nth-child(even) .room-image{order:0}.room-image,.room-image img{min-height:250px;height:60vw;max-height:390px}.room-info{padding:27px}.experience-grid{grid-template-columns:1fr 1fr}.experience:first-child{grid-column:1/-1}.experience{min-height:260px}.experience:first-child{min-height:330px}.map-card{min-height:290px}.section-head{display:block}.section-head p{margin-top:18px}.dock{bottom:10px}.footer{padding-bottom:90px}}
+@media(max-width:480px){.hero h1{font-size:clamp(3.25rem,15vw,5rem)}.hero-actions{align-items:stretch;flex-direction:column;width:min(100%,310px)}.hero-actions .button{width:100%}.moment{grid-template-columns:65px 1fr;gap:12px}.moment time{font-size:18px}.moment h3{font-size:22px}.vip-photos{gap:8px}.room-bottom{align-items:center}.room-price{font-size:22px}.experience-grid{grid-template-columns:1fr}.experience:first-child{grid-column:auto}.experience,.experience:first-child{min-height:260px}.field-row{grid-template-columns:1fr 1fr}.footer-row{justify-content:center;text-align:center}.footer-brand{justify-content:center}.footer-links{justify-content:center}.dock span{font-size:13px}.dock .button{padding:0 12px;font-size:9px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.moment:hover,.button:hover{transform:none}}
 </style>
 </head>
 <body>
-<a href="#main-content" class="skip-link">Pular para o conteúdo</a>
-
-<a href="https://wa.me/5537988343272?text=Olá!%20Quero%20fazer%20uma%20reserva%20na%20Pousada%20Jurerê%20da%20Canastra." target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Falar no WhatsApp">
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 0C5.374 0 0 5.373 0 12c0 2.117.554 4.1 1.523 5.818L.057 23.862a.5.5 0 00.612.612l6.046-1.466A11.932 11.932 0 0011.998 24C18.626 24 24 18.627 24 12c0-6.628-5.374-12-12.002-12z"/></svg>
-</a>
-
-<nav id="nav">
-  <div class="nav-logo"><img src="img/logo.png" alt="Jurerê da Canastra"></div>
-  <div class="nav-links">
-    <a href="#acomodacoes">Acomodações</a>
-    <a href="#experiencias">Experiências</a>
-    <a href="https://wa.me/5537988343272?text=Olá!%20Quero%20fazer%20uma%20reserva." target="_blank" rel="noopener noreferrer" class="nav-cta">Reservar</a>
-  </div>
-  <button class="nav-hamburger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
-</nav>
-
-<div id="mobile-menu" class="mobile-menu" aria-hidden="true">
-  <a href="#acomodacoes">Acomodações</a>
-  <a href="#experiencias">Experiências</a>
-  <a href="https://wa.me/5537988343272?text=Olá!%20Quero%20fazer%20uma%20reserva." target="_blank" rel="noopener noreferrer" class="nav-cta">Reservar</a>
-</div>
-
-<main id="main-content">
-<section class="hero">
-  <div class="hero-photo"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-tag">Vargem Bonita · Serra da Canastra · MG</div>
-    <span class="hero-name">Pousada Jurerê da Canastra</span>
-    <h1>Onde o tempo<br>passa <em>devagar</em></h1>
-    <p class="hero-sub">Às margens do Rio São Francisco, entre a natureza da Serra da Canastra. Conforto, lareira e silêncio em um cantinho único.</p>
-    <a href="https://wa.me/5537988343272?text=Olá!%20Quero%20fazer%20uma%20reserva%20na%20Pousada%20Jurerê%20da%20Canastra." target="_blank" rel="noopener noreferrer" class="hero-cta">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 0C5.374 0 0 5.373 0 12c0 2.117.554 4.1 1.523 5.818L.057 23.862a.5.5 0 00.612.612l6.046-1.466A11.932 11.932 0 0011.998 24C18.626 24 24 18.627 24 12c0-6.628-5.374-12-12.002-12z"/></svg>
-      Fazer reserva
-    </a>
-  </div>
-  <div class="hero-scroll"><span>scroll</span><div class="hero-scroll-line"></div></div>
-</section>
-
-<section class="quote-sec">
-  <blockquote class="reveal">"Nada supera o prazer de estar em conexão com a natureza."</blockquote>
-  <cite>Pousada Jurerê da Canastra · Vargem Bonita, MG</cite>
-</section>
-
-<div class="full-photo">
-  <div class="full-photo-bg"></div>
-  <div class="full-photo-overlay"></div>
-  <div class="full-photo-label reveal">
-    <h2>Um cantinho único às margens do rio</h2>
-    <p>Rio São Francisco · Vargem Bonita, MG</p>
-  </div>
-</div>
-
-<section id="acomodacoes" class="acom-sec">
-  <h2 class="reveal">Nossas acomodações</h2>
-  <p class="acom-lead reveal">Três opções com café da manhã incluso, colchões de mola ensacada e tudo para você descansar de verdade. Crianças até 4 anos não pagam.</p>
-  <div class="acom-grid">
-
-    <div class="acom-card reveal">
-      <div class="carousel">
-        <div class="carousel-track">
-          <div class="carousel-slide"><img src="img/acomodacoes/suites/01.jpg" alt="Suíte"></div>
-          <div class="carousel-slide"><img src="img/acomodacoes/suites/02.jpg" alt="Suíte"></div>
-          <div class="carousel-slide"><img src="img/acomodacoes/suites/03.jpg" alt="Suíte"></div>
-          <div class="carousel-slide"><img src="img/acomodacoes/suites/04.jpg" alt="Suíte"></div>
-          <div class="carousel-slide"><img src="img/acomodacoes/suites/05.jpg" alt="Suíte"></div>
-        </div>
-        <button class="carousel-prev" aria-label="Anterior">&#10094;</button>
-        <button class="carousel-next" aria-label="Próximo">&#10095;</button>
-        <div class="carousel-dots"></div>
-      </div>
-      <div class="acom-card-overlay"></div>
-      <div class="acom-card-body">
-        <div class="acom-tipo">Acomodação</div>
-        <div class="acom-name">Suítes</div>
-        <div class="acom-desc">Cama Queen + box solteiro, Smart TV, ar condicionado quente e frio, frigobar, secador e espelho.</div>
-        <div class="acom-price"><strong>R$ 550</strong></div>
-        <div class="acom-price-sub">Casal · R$ 350 individual · Extra +12 anos R$ 200 · Criança 5-12 anos R$ 100</div>
-        <a href="https://wa.me/5537988343272?text=Olá!%20Quero%20reservar%20uma%20Suíte." target="_blank" rel="noopener noreferrer" class="acom-link">Reservar →</a>
-      </div>
-    </div>
-
-    <div class="acom-card reveal">
-      <div class="carousel">
-        <div class="carousel-track">
-          <div class="carousel-slide"><img src="img/acomodacoes/chales/01.jpg" alt="Chalé"></div>
-          <div class="carousel-slide"><img src="img/acomodacoes/chales/02.jpg" alt="Chalé"></div>
-          <div class="carousel-slide"><img src="img/acomodacoes/chales/03.jpg" alt="Chalé"></div>
-          <div class="carousel-slide"><img src="img/acomodacoes/chales/04.jpg" alt="Chalé"></div>
-          <div class="carousel-slide"><img src="img/acomodacoes/chales/05.jpg" alt="Chalé"></div>
-        </div>
-        <button class="carousel-prev" aria-label="Anterior">&#10094;</button>
-        <button class="carousel-next" aria-label="Próximo">&#10095;</button>
-        <div class="carousel-dots"></div>
-      </div>
-      <div class="acom-card-overlay"></div>
-      <div class="acom-card-body">
-        <div class="acom-tipo">Chalé</div>
-        <div class="acom-name">Chalés</div>
-        <div class="acom-desc">Cama Queen + box solteiro, Smart TV, ar condicionado quente e frio, frigobar, secador e espelho.</div>
-        <div class="acom-price"><strong>R$ 650</strong></div>
-        <div class="acom-price-sub">Casal · R$ 450 individual · Extra +12 anos R$ 200 · Criança 5-12 anos R$ 100</div>
-        <a href="https://wa.me/5537988343272?text=Olá!%20Quero%20reservar%20um%20Chalé." target="_blank" rel="noopener noreferrer" class="acom-link">Reservar →</a>
-      </div>
-    </div>
-
-    <div class="acom-card reveal">
-      <div class="vip-badge">VIP</div>
-      <div class="carousel">
-        <div class="carousel-track">
-          <div class="carousel-slide"><img src="img/acomodacoes/chale-vip/01.jpg" alt="Chalé VIP"></div>
-          <div class="carousel-slide"><img src="img/acomodacoes/chale-vip/02.jpg" alt="Chalé VIP"></div>
-          <div class="carousel-slide"><img src="img/acomodacoes/chale-vip/03.jpg" alt="Chalé VIP"></div>
-          <div class="carousel-slide"><img src="img/acomodacoes/chale-vip/04.jpg" alt="Chalé VIP"></div>
-          <div class="carousel-slide"><img src="img/acomodacoes/chale-vip/05.jpg" alt="Chalé VIP"></div>
-        </div>
-        <button class="carousel-prev" aria-label="Anterior">&#10094;</button>
-        <button class="carousel-next" aria-label="Próximo">&#10095;</button>
-        <div class="carousel-dots"></div>
-      </div>
-      <div class="acom-card-overlay"></div>
-      <div class="acom-card-body">
-        <div class="acom-tipo gold">Chalé VIP</div>
-        <div class="acom-name">Chalé VIP</div>
-        <div class="acom-desc">Cama King + 2 solteiros, Smart TV 50", ar condicionado, geladeira, microondas, lareira e ofurô privativo na varanda.</div>
-        <div class="acom-price"><strong>R$ 1.100</strong></div>
-        <div class="acom-price-sub">Casal · R$ 750 individual · Extra +12 anos R$ 350 · Criança 5-12 anos R$ 150</div>
-        <a href="https://wa.me/5537988343272?text=Olá!%20Quero%20reservar%20o%20Chalé%20VIP." target="_blank" rel="noopener noreferrer" class="acom-link gold">Reservar →</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div id="experiencias" class="split">
-  <div class="split-photo reveal-left">
-    <div class="split-bg" style="background-image:url('img/experiencias/lareira.jpg')"></div>
-    <div class="split-overlay"></div>
-    <div class="split-label"><h3>Lareira & Aconchego</h3><p>Noites frias da Canastra com o calor da lareira. Exclusivo nos Chalés VIP.</p></div>
-  </div>
-  <div class="split-photo reveal-scale">
-    <div class="carousel split-carousel">
-      <div class="carousel-track">
-        <div class="carousel-slide"><img src="img/experiencias/cafe-da-manha.jpg" alt="Café da manhã"></div>
-        <div class="carousel-slide"><img src="img/experiencias/pao-de-queijo.jpg" alt="Pão de queijo"></div>
-        <div class="carousel-slide"><img src="img/experiencias/queijo.jpg" alt="Queijo da Canastra"></div>
-      </div>
-      <button class="carousel-prev" aria-label="Anterior">&#10094;</button>
-      <button class="carousel-next" aria-label="Próximo">&#10095;</button>
-      <div class="carousel-dots"></div>
-    </div>
-    <div class="split-overlay"></div>
-    <div class="split-label"><h3>Café da Manhã</h3><p>Pão de queijo, queijo da Canastra, frutas frescas, bolos caseiros e café quentinho. Incluso em todas as hospedagens.</p></div>
-  </div>
-</div>
-
-<div class="nature-sec">
-  <div class="nature-grid">
-    <div class="nature-item reveal"><h3>Rio São Francisco</h3><p>Às margens onde o Velho Chico nasce, entre pedras e mata nativa.</p></div>
-    <div class="nature-item reveal"><h3>Serra da Canastra</h3><p>Trilhas, cachoeiras e o Parque Nacional a poucos minutos.</p></div>
-    <div class="nature-item reveal"><h3>Casca D'anta</h3><p>A maior queda do Rio São Francisco, com mais de 180 metros de altura.</p></div>
-    <div class="nature-item reveal"><h3>Fauna & Flora</h3><p>Lobos-guará, pássaros nativos e o Cerrado em todo esplendor.</p></div>
-  </div>
-</div>
-
-<section class="cta-sec">
-  <div class="cta-photo"></div>
-  <div class="cta-overlay"></div>
-  <div class="cta-content reveal">
-    <h2>Reserve seu refúgio na Canastra</h2>
-    <p>Fale conosco pelo WhatsApp e garanta sua estadia. Respondemos com rapidez.</p>
-    <div class="cta-btns">
-      <a href="https://wa.me/5537988343272?text=Olá!%20Quero%20fazer%20uma%20reserva%20na%20Pousada%20Jurerê%20da%20Canastra." target="_blank" rel="noopener noreferrer" class="btn-wa">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 0C5.374 0 0 5.373 0 12c0 2.117.554 4.1 1.523 5.818L.057 23.862a.5.5 0 00.612.612l6.046-1.466A11.932 11.932 0 0011.998 24C18.626 24 24 18.627 24 12c0-6.628-5.374-12-12.002-12z"/></svg>
-        Reservar pelo WhatsApp
-      </a>
-      <a href="https://www.instagram.com/pousadajureredacanastra" target="_blank" rel="noopener noreferrer" class="btn-outline">Ver no Instagram</a>
-    </div>
-  </div>
-</section>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div class="preload" id="preload" aria-label="Carregando"><div class="preload-inner"><img src="img/logo-removebg-preview.png" alt=""><div class="preload-count"><span id="loadCount">00</span>%</div></div></div>
+<header class="nav" id="nav"><div class="wrap nav-row"><a class="brand" href="#inicio" aria-label="Jurerê da Canastra, início"><img src="img/logo-removebg-preview.png" alt="Logo da Pousada Jurerê da Canastra"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menu</button><nav class="nav-links" id="navLinks" aria-label="Navegação principal"><a href="#dia">A pousada</a><a href="#acomodacoes">Acomodações</a><a href="#experiencias">Experiências</a><a href="#localizacao">Como chegar</a><button class="button" data-open="quote">Simular estadia</button></nav></div></header>
+<main id="conteudo">
+<section class="hero" id="inicio" aria-labelledby="heroTitle"><div class="hero-media"><picture><source srcset="img/hero-refactor.webp" type="image/webp"><img img/corredorverde.png alt="Verde exuberante e paisagem da Pousada Jurerê, na Serra da Canastra" fetchpriority="high" decoding="async"></picture></div><div class="hero-shade"></div><div class="hero-content"><div class="eyebrow">Vargem Bonita · Serra da Canastra · Minas Gerais</div><h1 id="heroTitle">Onde o tempo passa <em>devagar</em> às margens do Velho Chico.</h1><p class="hero-lead">Um lugar para acordar sem pressa, ouvir o rio e deixar a Serra da Canastra cuidar do resto.</p><div class="hero-actions"><button class="button" data-open="quote">Planeje sua estadia <span aria-hidden="true">↗</span></button><a class="button ghost" href="#dia">Conheça a pousada</a></div></div><div class="hero-caption">Rio São Francisco · 20°18′ S</div></section>
+<section class="intro"><div class="wrap intro-grid"><img class="intro-mark" src="img/logo-removebg-preview.png" alt="" loading="lazy" decoding="async"><div class="intro-copy"><div class="eyebrow">Um refúgio no caminho das águas</div><h2>O melhor da viagem é quando a gente <em>desacelera.</em></h2><p>À beira do Rio São Francisco, a Jurerê reúne o acolhimento mineiro, o verde do Cerrado e o conforto simples de estar exatamente onde você queria chegar. Café passado, conversa boa e noites que pedem lareira.</p></div></div></section>
+<section class="day" id="dia"><div class="wrap day-grid"><div class="day-title"><div class="eyebrow">Um dia na Jurerê</div><h2>O tempo ganha outro ritmo.</h2><p>Sem roteiro obrigatório. Só os pequenos momentos que fazem a Canastra ficar com a gente.</p></div><div class="moments"><article class="moment"><time>08h</time><div><h3>Café Canastra</h3><p>Bolo caseiro ainda morno, queijo da região e café com calma para começar o dia.</p></div></article><article class="moment"><time>11h</time><div><h3>O chamado do rio</h3><p>O Velho Chico corre pertinho. Um convite para respirar fundo e se reconectar com a natureza.</p></div></article><article class="moment"><time>17h</time><div><h3>Luz de fim de tarde</h3><p>O sol baixa sobre a serra. Guarde um instante para olhar, sem precisar fotografar.</p></div></article><article class="moment"><time>20h</time><div><h3>Noite de lareira</h3><p>Quando esfria, o fogo aceso e o silêncio da serra fazem o resto.</p></div></article></div></div></section>
+<section class="vip" id="vip"><div class="wrap vip-layout"><div class="vip-copy"><div class="eyebrow">Um capítulo à parte</div><h2>Chalé VIP.<br><em>Seu refúgio.</em></h2><p>Privacidade, madeira e o prazer de um banho quente olhando para a serra. O chalé mais especial da pousada foi feito para celebrar sem pressa.</p><div class="vip-price">R$ 1.100 <small>/ noite para casal</small></div><div class="vip-features"><span>Ofurô privativo</span><span>Lareira</span><span>Cama king</span><span>Café da manhã</span></div><button class="button" data-room="Chalé VIP" data-open="quote">Consultar o Chalé VIP ↗</button></div><div class="vip-photos"><figure><picture><source srcset="img/vip1.webp" type="image/webp"><img src="img/vip1.png" alt="Interior acolhedor do Chalé VIP" loading="lazy" decoding="async"></picture><figcaption>Um espaço só seu, no coração da Canastra.</figcaption></figure><figure><picture><source srcset="img/vip2.webp" type="image/webp"><img src="img/vip2.png" alt="Detalhes de conforto no Chalé VIP" loading="lazy" decoding="async"></picture></figure><figure><picture><source srcset="img/lareira.webp" type="image/webp"><img src="img/lareira.png" alt="Lareira acesa para as noites frias da serra" loading="lazy" decoding="async"></picture><figcaption>Lareira acesa. O mundo pode esperar.</figcaption></figure></div></div></section>
+<section class="rooms" id="acomodacoes"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Escolha seu jeito de ficar</div><h2>Acomodações para<br>se sentir em casa.</h2></div><p>Conforto, café da manhã incluso e a hospitalidade de quem conhece cada cantinho da Canastra.</p></div><div class="room-list"><article class="room"><div class="room-image"><picture><source srcset="img/chale.webp" type="image/webp"><img src="img/chale.png" alt="Suíte da Pousada Jurerê" loading="lazy" decoding="async"></picture></div><div class="room-info"><div class="eyebrow">Para descansar bem</div><h3>Suítes</h3><p>Cama Queen e cama box de solteiro, ar-condicionado quente e frio, Smart TV, frigobar, secador e espelho. Crianças até 4 anos não pagam.</p><div class="room-bottom"><div class="room-price">R$ 550 <small>casal · por noite</small></div><button class="text-link" data-room="Suíte" data-open="quote">Consultar datas ↗</button></div></div></article><article class="room"><div class="room-image"><picture><source srcset="img/chale2.webp" type="image/webp"><img src="img/chale2.png" alt="Chalé cercado pelo verde da Canastra" loading="lazy" decoding="async"></picture></div><div class="room-info"><div class="eyebrow">Seu cantinho na serra</div><h3>Chalés</h3><p>Cama Queen e cama box de solteiro, ar-condicionado quente e frio, Smart TV, frigobar, secador e espelho. Café da manhã incluso.</p><div class="room-bottom"><div class="room-price">R$ 650 <small>casal · por noite</small></div><button class="text-link" data-room="Chalé" data-open="quote">Consultar datas ↗</button></div></div></article></div></div></section>
+<section class="experiences" id="experiencias"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Lá fora, a Canastra</div><h2>Natureza que não<br>precisa de filtro.</h2></div><p>O rio, a serra, a mesa farta e os encontros inesperados. Experiências para viver no seu ritmo.</p></div><div class="experience-grid"><article class="experience"><picture><source srcset="img/rio.webp" type="image/webp"><img src="img/rio.jpeg" alt="Rio São Francisco em meio à paisagem natural" loading="lazy" decoding="async"></picture><div class="experience-copy"><h3>Velho Chico</h3><p>Às margens de um dos rios mais importantes do Brasil, no lugar onde ele ainda é jovem.</p></div></article><article class="experience"><picture><source srcset="img/fachada.webp" type="image/webp"><img src="img/fachada.png" alt="Fachada da pousada e a arquitetura acolhedora" loading="lazy" decoding="async"></picture><div class="experience-copy"><h3>Serra & cachoeiras</h3><p>Trilhas, paisagens e as quedas d'água da região, incluindo a imponente Casca d'Anta.</p></div></article><article class="experience"><picture><source srcset="img/cafedamanha1.webp" type="image/webp"><img src="img/cafedamanha1.png" alt="Mesa de café da manhã mineiro" loading="lazy" decoding="async"></picture><div class="experience-copy"><h3>Sabores da manhã</h3><p>Um café da manhã caprichado, com gostinho de Minas, incluso na sua hospedagem.</p></div></article></div></div></section>
+<section class="place" id="localizacao"><div class="wrap place-grid"><div class="place-copy"><div class="eyebrow">Vargem Bonita · Minas Gerais</div><h2>O caminho já faz parte da viagem.</h2><p>Estamos na região da Serra da Canastra, em Vargem Bonita, pertinho do Rio São Francisco e da saída para a Casca d'Anta. Escolha seu aplicativo de navegação e venha com calma.</p><div class="map-links"><a class="button" href="https://www.google.com/maps/search/?api=1&query=Pousada+Jurer%C3%AA+da+Canastra+Vargem+Bonita+MG" target="_blank" rel="noopener noreferrer">Google Maps ↗</a><a class="button ghost" href="https://waze.com/ul?q=Pousada%20Jurer%C3%AA%20da%20Canastra%2C%20Vargem%20Bonita%20MG&navigate=yes" target="_blank" rel="noopener noreferrer">Waze ↗</a><button class="button ghost" data-open="directions">Mais opções</button></div></div><div class="map-card" aria-label="Pousada Jurerê da Canastra em Vargem Bonita, Minas Gerais"><div class="map-mark"><b aria-hidden="true">⌖</b><span>Jurerê da Canastra</span><small>Vargem Bonita · MG</small></div></div></div></section>
 </main>
-
-<!-- LOCALIZAÇÃO -->
-<section class="location-sec">
-  <div class="location-text reveal">
-    <h2>Como chegar</h2>
-    <p>Saída para a Casca D'anta · Vargem Bonita, MG</p>
-    <a href="https://www.google.com/maps/place/Pousada+Jurer%C3%AA+da+Canastra/@-20.3263789,-46.3830465" target="_blank" rel="noopener noreferrer" class="acom-link">Abrir no Google Maps →</a>
-  </div>
-  <div class="location-map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.5!2d-46.3830465!3d-20.3263789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b14d89ed311101%3A0x6f9181aed928b459!2sPousada%20Jurer%C3%AA%20da%20Canastra!5e0!3m2!1spt-BR!2sbr!4v1" width="100%" height="100%" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-logo"><img src="img/logo.png" alt="Jurerê da Canastra"></div>
-  <div class="footer-info">Saída para a Casca D'anta · Vargem Bonita, MG<br>(37) 98834-3272</div>
-  <div class="footer-links">
-    <a href="https://www.instagram.com/pousadajureredacanastra" target="_blank" rel="noopener noreferrer">Instagram</a>
-    <a href="https://wa.me/5537988343272" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-  </div>
-</footer>
-
+<footer class="footer"><div class="wrap footer-row"><a class="footer-brand" href="#inicio"><img src="img/logo-removebg-preview.png" alt=""><span>Jurerê da Canastra</span></a><div class="footer-note">Saída para a Casca d'Anta · Vargem Bonita, MG<br>(37) 98834-3272</div><div class="footer-links"><a href="https://www.instagram.com/pousadajureredacanastra" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://wa.me/5537988343272" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a></div></div></footer>
+<div class="dock"><span>Seu próximo descanso começa aqui</span><button class="button" data-open="quote">Simular estadia</button></div>
+<div class="modal-backdrop" id="quoteModal" role="dialog" aria-modal="true" aria-labelledby="quoteTitle"><div class="drawer"><div class="drawer-top"><h2 id="quoteTitle">Vamos planejar?</h2><button class="close" data-close aria-label="Fechar">×</button></div><p style="font-size:13px;line-height:1.7;color:var(--muted);margin:-18px 0 26px">Conte um pouquinho sobre a viagem. A estimativa é para casal; confirmamos disponibilidade e valores pelo WhatsApp.</p><form id="quoteForm"><div class="field"><label for="roomSelect">Acomodação</label><select id="roomSelect"><option value="Suíte" data-price="550">Suíte — R$ 550/noite</option><option value="Chalé" data-price="650">Chalé — R$ 650/noite</option><option value="Chalé VIP" data-price="1100">Chalé VIP — R$ 1.100/noite</option></select></div><div class="field-row"><div class="field"><label for="nights">Número de noites</label><input id="nights" type="number" min="1" max="30" value="2" inputmode="numeric"></div><div class="field"><label for="guests">Hóspedes</label><select id="guests"><option>2</option><option>1</option><option>3</option><option>4</option></select></div></div><div class="field-row"><div class="field"><label for="checkin">Entrada</label><input id="checkin" type="date"></div><div class="field"><label for="checkout">Saída</label><input id="checkout" type="date"></div></div><div class="quote-total"><span>Estimativa para casal</span><strong id="totalPrice">R$ 1.100</strong></div><button class="button" type="submit">Continuar no WhatsApp ↗</button><p class="drawer-note">Estimativa sujeita a disponibilidade. Valores de hóspedes adicionais são confirmados diretamente com a pousada.</p></form></div></div>
+<div class="modal-backdrop" id="directionsModal" role="dialog" aria-modal="true" aria-labelledby="directionsTitle"><div class="drawer"><div class="drawer-top"><h2 id="directionsTitle">Como prefere chegar?</h2><button class="close" data-close aria-label="Fechar">×</button></div><p style="font-size:13px;line-height:1.7;color:var(--muted)">Abra seu aplicativo de navegação para a Pousada Jurerê da Canastra, em Vargem Bonita, MG.</p><div class="map-links" style="margin-top:24px"><a class="button" href="https://www.google.com/maps/search/?api=1&query=Pousada+Jurer%C3%AA+da+Canastra+Vargem+Bonita+MG" target="_blank" rel="noopener noreferrer">Google Maps ↗</a><a class="button ghost" href="https://waze.com/ul?q=Pousada%20Jurer%C3%AA%20da%20Canastra%2C%20Vargem%20Bonita%20MG&navigate=yes" target="_blank" rel="noopener noreferrer">Waze ↗</a><a class="button ghost" href="https://maps.apple.com/?q=Pousada%20Jurer%C3%AA%20da%20Canastra%2C%20Vargem%20Bonita%20MG" target="_blank" rel="noopener noreferrer">Apple Mapas ↗</a><a class="button ghost" href="https://m.uber.com/ul/?action=setPickup&dropoff[formatted_address]=Pousada%20Jurer%C3%AA%20da%20Canastra%2C%20Vargem%20Bonita%20MG" target="_blank" rel="noopener noreferrer">Uber ↗</a><a class="button ghost" href="https://99app.com/" target="_blank" rel="noopener noreferrer">99 ↗</a></div><p class="drawer-note">Para o Uber e 99, confirme a disponibilidade de motoristas na região antes da viagem.</p></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
-document.addEventListener('DOMContentLoaded',()=>{
-  window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)});
-
-  const hb=document.querySelector('.nav-hamburger'),mm=document.getElementById('mobile-menu');
-  hb.addEventListener('click',()=>{const o=mm.classList.toggle('open');hb.classList.toggle('active');hb.setAttribute('aria-expanded',o);mm.setAttribute('aria-hidden',!o);document.body.style.overflow=o?'hidden':''});
-  mm.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{mm.classList.remove('open');hb.classList.remove('active');hb.setAttribute('aria-expanded','false');mm.setAttribute('aria-hidden','true');document.body.style.overflow=''}));
-
-  document.querySelectorAll('.carousel').forEach(c=>{
-    const track=c.querySelector('.carousel-track'),slides=c.querySelectorAll('.carousel-slide'),prev=c.querySelector('.carousel-prev'),next=c.querySelector('.carousel-next'),dots=c.querySelector('.carousel-dots');
-    const isFade=c.classList.contains('split-carousel');
-    let cur=0,total=slides.length,autoTimer;
-    if(isFade){slides[0].classList.add('active-slide')}
-    for(let i=0;i<total;i++){const d=document.createElement('button');d.className=i===0?'active':'';d.addEventListener('click',()=>{go(i);resetAuto()});dots.appendChild(d)}
-    function go(i){cur=((i%total)+total)%total;if(isFade){slides.forEach((s,j)=>s.classList.toggle('active-slide',j===cur))}else{track.scrollTo({left:cur*track.offsetWidth,behavior:'smooth'})}dots.querySelectorAll('button').forEach((d,j)=>d.classList.toggle('active',j===cur))}
-    function startAuto(){autoTimer=setInterval(()=>go(cur+1),4000)}
-    function resetAuto(){clearInterval(autoTimer);startAuto()}
-    prev.addEventListener('click',e=>{e.stopPropagation();go(cur-1);resetAuto()});
-    next.addEventListener('click',e=>{e.stopPropagation();go(cur+1);resetAuto()});
-    let sx=0;
-    track.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;clearInterval(autoTimer)});
-    track.addEventListener('touchend',e=>{const d=sx-e.changedTouches[0].clientX;if(Math.abs(d)>50){d>0?go(cur+1):go(cur-1)}startAuto()});
-    if(!isFade){track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.offsetWidth);if(i!==cur){cur=i;dots.querySelectorAll('button').forEach((d,j)=>d.classList.toggle('active',j===cur))}})}
-    startAuto();
-  });
-
-  const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target)}})},{threshold:.15});
-  document.querySelectorAll('.reveal,.reveal-left,.reveal-scale').forEach(el=>obs.observe(el));
-});
+(()=>{'use strict';const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];const nav=$('#nav'),menu=$('#menuToggle'),links=$('#navLinks'),quote=$('#quoteModal'),directions=$('#directionsModal'),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;let lastFocus=null;
+const reveal=()=>{const pre=$('#preload');if(!pre||pre.classList.contains('done'))return;pre.classList.add('done');setTimeout(()=>pre.remove(),700)};let count=0;const countEl=$('#loadCount');const timer=setInterval(()=>{count=Math.min(count+Math.ceil(Math.random()*17),96);countEl.textContent=String(count).padStart(2,'0')},60);if(document.readyState==='complete'){clearInterval(timer);countEl.textContent='100';setTimeout(reveal,180)}else window.addEventListener('load',()=>{clearInterval(timer);countEl.textContent='100';setTimeout(reveal,180)},{once:true});setTimeout(()=>{clearInterval(timer);countEl.textContent='100';reveal()},2500);
+const updateNav=()=>nav.classList.toggle('scrolled',scrollY>24);window.addEventListener('scroll',updateNav,{passive:true});updateNav();menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));links.classList.toggle('open',open)});$$('#navLinks a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
+function openModal(el){lastFocus=document.activeElement;el.classList.add('open');document.body.style.overflow='hidden';const focus=$('button,input,select,a',el);if(focus)focus.focus()}function closeModal(el){el.classList.remove('open');document.body.style.overflow='';if(lastFocus)lastFocus.focus()}$$('[data-open="quote"]').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.room)$('#roomSelect').value=b.dataset.room;updateTotal();openModal(quote)}));$$('[data-open="directions"]').forEach(b=>b.addEventListener('click',()=>openModal(directions)));$$('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(b.closest('.modal-backdrop'))));[quote,directions].forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m)}));document.addEventListener('keydown',e=>{if(e.key==='Escape'){const active=$('.modal-backdrop.open');if(active)closeModal(active)}});
+const price=()=>Number($('#roomSelect').selectedOptions[0].dataset.price)||550;function updateTotal(){const nights=Math.max(1,Math.min(30,Number($('#nights').value)||1));$('#totalPrice').textContent=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0}).format(price()*nights)}$('#roomSelect').addEventListener('change',updateTotal);$('#nights').addEventListener('input',updateTotal);$('#checkin').addEventListener('change',()=>{const d=$('#checkin').value;if(d){const next=new Date(d+'T12:00:00');next.setDate(next.getDate()+1);$('#checkout').min=next.toISOString().slice(0,10);if(!$('#checkout').value||$('#checkout').value<=d)$('#checkout').value=next.toISOString().slice(0,10)}});$('#quoteForm').addEventListener('submit',e=>{e.preventDefault();const room=$('#roomSelect').value,nights=Math.max(1,Number($('#nights').value)||1),guests=$('#guests').value,checkin=$('#checkin').value||'a combinar',checkout=$('#checkout').value||'a combinar',total=$('#totalPrice').textContent;const msg=`Olá! Gostaria de consultar disponibilidade na Pousada Jurerê da Canastra.\n\nAcomodação: ${room}\nEntrada: ${checkin}\nSaída: ${checkout}\nNoites: ${nights}\nHóspedes: ${guests}\nEstimativa para casal: ${total}\n\nPoderiam confirmar valores e disponibilidade?`;window.open(`https://wa.me/5537988343272?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer')});
+})();
 </script>
 </body>
 </html>
